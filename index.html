@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quartier Noble — Agence de Mannequins</title>
+  <meta name="description" content="Quartier Noble, agence de mannequins. Représentation, casting et direction artistique à Paris et international.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <a href="#" class="logo" data-locale="hero.title">Quartier Noble</a>
+    <nav class="nav">
+      <a href="#agence" data-locale="nav.agence">L'agence</a>
+      <a href="#modeles" data-locale="nav.modeles">Nos modèles</a>
+      <a href="#services" data-locale="nav.services">Services</a>
+      <a href="#contact" data-locale="nav.contact">Contact</a>
+      <button type="button" class="nav-login" data-locale="nav.connexion" id="open-login">Connexion</button>
+    </nav>
+    <button class="menu-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <p class="hero-tagline" data-locale="hero.tagline">Agence de mannequins</p>
+        <h1 class="hero-title" data-locale="hero.title">Quartier Noble</h1>
+        <p class="hero-subtitle" data-locale="hero.subtitle">Représentation, casting et direction artistique</p>
+        <a href="#modeles" class="btn btn-primary" data-locale="hero.cta">Découvrir nos modèles</a>
+      </div>
+      <div class="hero-scroll">
+        <span data-locale="hero.scroll">Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <section id="agence" class="section section-about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text">
+            <span class="section-label" data-locale="about.label">L'agence</span>
+            <h2 class="about-title" data-locale="about.title">Une vision singulière du talent</h2>
+            <p class="about-lead" data-locale="about.lead">Quartier Noble accompagne les mannequins…</p>
+            <p data-locale="about.p2">Basés à Marseille, nous travaillons…</p>
+          </div>
+          <div class="about-visual">
+            <div class="about-frame">
+              <img src="vision/vision.jpg" alt="Quartier Noble — Vision">
+              <span class="about-frame-hint">Votre image</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="modeles" class="section section-models">
+      <div class="container">
+        <span class="section-label" data-locale="models.label">Nos modèles</span>
+        <h2 data-locale="models.title">Nos modèles</h2>
+        <div class="models-grid" id="models-grid"></div>
+        <p class="models-cta" data-locale="models.cta">Pour consulter notre book complet…</p>
+      </div>
+    </section>
+
+    <section id="services" class="section section-services">
+      <div class="container">
+        <span class="section-label" data-locale="services.label">Services</span>
+        <h2 data-locale="services.title">Ce que nous proposons</h2>
+        <ul class="services-list">
+          <li data-locale="services.item1"><strong>Représentation</strong> — Gestion de carrière et stratégie à long terme</li>
+          <li data-locale="services.item2">Casting — Défilés, campagnes, éditoriaux, publicité</li>
+          <li data-locale="services.item3">Direction artistique — Conseils et suivi pour chaque projet</li>
+          <li data-locale="services.item4"><strong>International</strong> — Placements et partenariats à l’étranger</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="section section-contact">
+      <div class="container">
+        <span class="section-label" data-locale="contact.label">Contact</span>
+        <h2 data-locale="contact.title">Travaillons ensemble</h2>
+        <div class="contact-grid">
+          <div class="contact-info" id="contact-info">
+            <p><strong id="contact-company">Quartier Noble</strong></p>
+            <p id="contact-address-wrap" class="contact-line"><span class="icon-address" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span id="contact-address">Paris, France</span></p>
+            <p id="contact-email-wrap" class="contact-line"><span class="icon-email" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span><span id="contact-email-text">contact@quartiernoble.com</span></p>
+            <p id="contact-phone-wrap" class="contact-line"><span class="icon-phone" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span id="contact-phone">+33 1 00 00 00 00</span></p>
+            <p id="contact-insta-wrap"><a href="#" id="contact-insta" target="_blank" rel="noopener noreferrer" class="link-insta"><span class="icon-insta" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span> Instagram</a></p>
+          </div>
+          <form class="contact-form" action="#" method="post">
+            <label for="name" data-locale="contact.formName">Nom / Société</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email" data-locale="contact.formEmail">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message" data-locale="contact.formMessage">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <button type="submit" class="btn btn-primary" data-locale="contact.submit">Envoyer</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modale connexion -->
+  <div class="login-modal" id="login-modal" aria-hidden="true">
+    <div class="login-modal-backdrop" id="login-modal-backdrop"></div>
+    <div class="login-modal-panel" role="dialog" aria-labelledby="login-modal-title">
+      <h2 id="login-modal-title" data-locale="login.title">Connexion</h2>
+      <form class="login-form" id="login-form" novalidate>
+        <label for="login-username" data-locale="login.user">Identifiant</label>
+        <input type="text" id="login-username" name="username" autocomplete="username" required>
+        <label for="login-password" data-locale="login.password">Mot de passe</label>
+        <input type="password" id="login-password" name="password" autocomplete="current-password" required>
+        <p class="login-error" id="login-error" role="alert" hidden data-locale="login.error">Identifiant ou mot de passe incorrect.</p>
+        <div class="login-actions">
+          <button type="button" class="btn btn-ghost" id="login-cancel" data-locale="login.cancel">Annuler</button>
+          <button type="submit" class="btn btn-primary" data-locale="login.submit">Valider</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Galerie modale (photos du modèle) -->
+  <div class="model-gallery" id="model-gallery" aria-hidden="true">
+    <div class="model-gallery-backdrop"></div>
+    <div class="model-gallery-inner">
+      <button type="button" class="model-gallery-close" aria-label="Fermer">&times;</button>
+      <h2 class="model-gallery-title" id="model-gallery-title"></h2>
+      <div class="model-gallery-main">
+        <button type="button" class="model-gallery-prev" aria-label="Photo précédente">&larr;</button>
+        <div class="model-gallery-current">
+          <img src="" alt="" id="model-gallery-img">
+        </div>
+        <button type="button" class="model-gallery-next" aria-label="Photo suivante">&rarr;</button>
+      </div>
+      <p class="model-gallery-counter"><span id="model-gallery-current-n">1</span> / <span id="model-gallery-total-n">1</span></p>
+      <div class="model-gallery-thumbs" id="model-gallery-thumbs"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-logo" data-locale="footer.logo">Quartier Noble</p>
+      <p class="footer-legal" data-locale="footer.legal">© 2025 Quartier Noble.</p>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
