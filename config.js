@@ -11,7 +11,7 @@ window.QUARTIER_NOBLE_CONFIG = {
     phone: "00000",
     email: "quartiernoble130@gmail.com",
     showAddress: true,
-    showPhone: true,
+    showPhone: false,
     showEmail: true,
     // Pour recevoir les messages du formulaire par email : créez un formulaire sur https://formspree.io
     // (gratuit), indiquez quartiernoble130@gmail.com comme email de réception, puis collez ici l’URL
@@ -27,7 +27,6 @@ window.QUARTIER_NOBLE_CONFIG = {
       { username: "mapess", password: "kaaris" },
       { username: "ben", password: "1230" },
       { username: "bousky", password: "bousky13" },
-      { username: "asna", password: "asna130" },
       { username: "yousra", password: "laboss13" }
     ]
   },
@@ -95,20 +94,17 @@ Pour toute question d’interprétation, contactez Quartier Noble avant d’enga
   // ——— Modèles (nom, label sous la photo, liste de photos ; la 1re = image de la carte) ———
   models: [
     {
-      name: "Harysson",
-      label: "Homme",
+      name: "Bousky",
+      label: "Femme",
       photos: [
-        "model/Harysson/Harysson1.jpg",
-        "model/Harysson/Harysson2.jpg",
-        "model/Harysson/Harysson3.jpg"
+        "model/Bousky/Bousky.jpeg"
       ]
     },
     {
-      name: "Moha",
-      label: "Homme",
+      name: "Yousra",
+      label: "Femme",
       photos: [
-        "model/Moha/Moha0.jpg",
-        "model/Moha/Moha1.jpg"
+        "model/yousra/yousra.jpeg"
       ]
     }
   ],
