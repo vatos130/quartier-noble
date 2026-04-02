@@ -545,6 +545,47 @@ img { max-width: 100%; height: auto; display: block; }
   margin-top: var(--space-s);
 }
 .login-actions .btn { flex: 0 0 auto; }
+.login-form .btn-primary.is-loading {
+  cursor: wait;
+  pointer-events: none;
+  animation: login-btn-pulse 1.1s ease-in-out infinite;
+}
+@keyframes login-btn-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+/* Chargement connexion réussie : overlay + spinner (visible ~1,2 s) */
+.login-modal-panel.is-connecting {
+  position: relative;
+}
+.login-modal-panel.is-connecting::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.42);
+  border-radius: 8px;
+  z-index: 1;
+}
+.login-modal-panel.is-connecting::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border: 3px solid rgba(255, 255, 255, 0.12);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  z-index: 2;
+  animation: login-spin 0.75s linear infinite;
+}
+@keyframes login-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 /* --- Page Annonce --- */
 .header-annonce {

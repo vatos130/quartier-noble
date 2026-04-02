@@ -127,6 +127,7 @@ Pour toute question d’interprétation, contactez Quartier Noble avant d’enga
       user: "Identifiant",
       password: "Mot de passe",
       submit: "Valider",
+      loading: "Connexion…",
       cancel: "Annuler",
       error: "Identifiant ou mot de passe incorrect."
     },

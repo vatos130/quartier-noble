@@ -115,6 +115,21 @@
     if (u) u.focus();
   }
 
+  function restoreLoginFormControls() {
+    var loc = window.QUARTIER_NOBLE_CONFIG && window.QUARTIER_NOBLE_CONFIG.locale && window.QUARTIER_NOBLE_CONFIG.locale.login;
+    var sb = loginForm && loginForm.querySelector('button[type="submit"]');
+    if (sb) {
+      sb.disabled = false;
+      sb.textContent = (loc && loc.submit) || 'Valider';
+      sb.classList.remove('is-loading');
+    }
+    if (loginCancel) loginCancel.disabled = false;
+    var u = document.getElementById('login-username');
+    var p = document.getElementById('login-password');
+    if (u) u.disabled = false;
+    if (p) p.disabled = false;
+  }
+
   function closeLoginModal() {
     if (!loginModal) return;
     loginModal.classList.remove('is-open');
@@ -122,6 +137,7 @@
     document.body.style.overflow = '';
     if (loginError) loginError.hidden = true;
     if (loginForm) loginForm.reset();
+    restoreLoginFormControls();
   }
 
   if (openLoginBtn) openLoginBtn.addEventListener('click', openLoginModal);
@@ -131,19 +147,38 @@
   if (loginForm) {
     loginForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      var rawU = (document.getElementById('login-username') || {}).value;
-      var rawP = (document.getElementById('login-password') || {}).value;
+      var cfg = window.QUARTIER_NOBLE_CONFIG;
+      var locLogin = cfg && cfg.locale && cfg.locale.login;
+      var submitBtn = loginForm.querySelector('button[type="submit"]');
+      var loadingLabel = (locLogin && locLogin.loading) || 'Connexion…';
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = loadingLabel;
+        submitBtn.classList.add('is-loading');
+      }
+      if (loginCancel) loginCancel.disabled = true;
+      var uEl = document.getElementById('login-username');
+      var pEl = document.getElementById('login-password');
+      if (uEl) uEl.disabled = true;
+      if (pEl) pEl.disabled = true;
+      if (loginError) loginError.hidden = true;
+
+      var rawU = (uEl || {}).value;
+      var rawP = (pEl || {}).value;
       var username = rawU != null ? String(rawU).trim() : '';
       var password = rawP != null ? String(rawP).trim() : '';
-      var cfg = window.QUARTIER_NOBLE_CONFIG;
       var users = cfg && cfg.auth && cfg.auth.users;
+
       if (!Array.isArray(users) || users.length === 0) {
+        restoreLoginFormControls();
         if (loginError) {
           loginError.textContent = 'Configuration indisponible. Vérifiez que config.js se charge (aucune erreur dans la page).';
           loginError.hidden = false;
         }
         return;
       }
+
       var matched = null;
       for (var i = 0; i < users.length; i++) {
         var u = users[i];
@@ -156,14 +191,22 @@
           break;
         }
       }
+
       if (matched) {
         sessionStorage.setItem(
           SESSION_KEY,
           JSON.stringify({ username: String(matched.username).trim() })
         );
-        window.location.href = 'annonce.html';
+        var panel = loginModal && loginModal.querySelector('.login-modal-panel');
+        if (loginModal) loginModal.setAttribute('aria-busy', 'true');
+        if (panel) panel.classList.add('is-connecting');
+        setTimeout(function () {
+          window.location.href = 'annonce.html';
+        }, 1200);
         return;
       }
+
+      restoreLoginFormControls();
       if (loginError) {
         var errDefault =
           (cfg.locale && cfg.locale.login && cfg.locale.login.error) ||
