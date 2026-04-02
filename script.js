@@ -131,19 +131,44 @@
   if (loginForm) {
     loginForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      var username = (document.getElementById('login-username') || {}).value;
-      var password = (document.getElementById('login-password') || {}).value;
-      var users = window.QUARTIER_NOBLE_CONFIG && window.QUARTIER_NOBLE_CONFIG.auth && window.QUARTIER_NOBLE_CONFIG.auth.users;
-      if (!Array.isArray(users)) users = [];
-      var ok = users.some(function (u) {
-        return u && u.username === username && u.password === password;
-      });
-      if (ok) {
-        sessionStorage.setItem(SESSION_KEY, JSON.stringify({ username: username }));
+      var rawU = (document.getElementById('login-username') || {}).value;
+      var rawP = (document.getElementById('login-password') || {}).value;
+      var username = rawU != null ? String(rawU).trim() : '';
+      var password = rawP != null ? String(rawP).trim() : '';
+      var cfg = window.QUARTIER_NOBLE_CONFIG;
+      var users = cfg && cfg.auth && cfg.auth.users;
+      if (!Array.isArray(users) || users.length === 0) {
+        if (loginError) {
+          loginError.textContent = 'Configuration indisponible. Vérifiez que config.js se charge (aucune erreur dans la page).';
+          loginError.hidden = false;
+        }
+        return;
+      }
+      var matched = null;
+      for (var i = 0; i < users.length; i++) {
+        var u = users[i];
+        if (!u || u.username == null || u.password == null) continue;
+        if (
+          String(u.username).trim().toLowerCase() === username.toLowerCase() &&
+          String(u.password) === password
+        ) {
+          matched = u;
+          break;
+        }
+      }
+      if (matched) {
+        sessionStorage.setItem(
+          SESSION_KEY,
+          JSON.stringify({ username: String(matched.username).trim() })
+        );
         window.location.href = 'annonce.html';
         return;
       }
       if (loginError) {
+        var errDefault =
+          (cfg.locale && cfg.locale.login && cfg.locale.login.error) ||
+          'Identifiant ou mot de passe incorrect.';
+        loginError.textContent = errDefault;
         loginError.hidden = false;
       }
     });
