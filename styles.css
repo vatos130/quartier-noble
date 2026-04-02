@@ -497,13 +497,15 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .login-modal-panel {
   position: relative;
+  box-sizing: border-box;
   width: 100%;
-  max-width: 400px;
+  max-width: min(400px, calc(100vw - 2rem));
   padding: var(--space-l);
   background: var(--color-bg-soft);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
+  min-width: 0;
 }
 .login-modal-panel h2 {
   font-size: 1.75rem;
@@ -540,11 +542,34 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .login-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-s);
   justify-content: flex-end;
+  align-items: stretch;
   margin-top: var(--space-s);
+  width: 100%;
+  min-width: 0;
 }
-.login-actions .btn { flex: 0 0 auto; }
+.login-actions .btn {
+  flex: 1 1 auto;
+  min-width: 0;
+  box-sizing: border-box;
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (max-width: 420px) {
+  .login-actions {
+    flex-direction: column;
+    justify-content: stretch;
+    gap: 0.65rem;
+  }
+  .login-actions .btn {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+  }
+}
 .login-form .btn-primary.is-loading {
   cursor: wait;
   pointer-events: none;
