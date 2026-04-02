@@ -25,9 +25,9 @@ window.QUARTIER_NOBLE_CONFIG = {
   auth: {
     users: [
       { username: "mapess", password: "kaaris" },
-      { username: "ben, password: "1230" },
-      { username: "bousky, password: "bousky13" },
-      { username: "asna, password: "asna130" },
+      { username: "ben", password: "1230" },
+      { username: "bousky", password: "bousky13" },
+      { username: "asna", password: "asna130" },
       { username: "yousra", password: "laboss13" }
     ]
   },
