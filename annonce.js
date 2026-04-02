@@ -220,6 +220,8 @@
   var navPickerPanel = null;
   var navPickerLabelEl = null;
   var navPickerOptionEls = [];
+  var navMobileEl = document.getElementById('espace-nav-mobile');
+  var navMobileTabEls = [];
 
   function closeNavPicker() {
     if (!navPickerBtn || !navPickerPanel) return;
@@ -250,6 +252,19 @@
       btn.classList.toggle('is-active', on);
       btn.setAttribute('aria-selected', on ? 'true' : 'false');
     });
+    navMobileTabEls.forEach(function (tab, j) {
+      var on = j === index;
+      tab.classList.toggle('is-active', on);
+      tab.setAttribute('aria-current', on ? 'page' : 'false');
+    });
+    var activeTab = navMobileTabEls[index];
+    if (activeTab && typeof activeTab.scrollIntoView === 'function') {
+      try {
+        activeTab.scrollIntoView({ inline: 'nearest', block: 'nearest', behavior: 'smooth' });
+      } catch (err) {
+        activeTab.scrollIntoView(false);
+      }
+    }
   }
 
   function renderSection(index) {
@@ -395,6 +410,27 @@
     wrap.appendChild(fieldLabel);
     wrap.appendChild(picker);
     navEl.appendChild(wrap);
+
+    if (navMobileEl) {
+      navMobileEl.innerHTML = '';
+      navMobileEl.classList.add('is-populated');
+      var track = document.createElement('div');
+      track.className = 'espace-nav-mobile-track';
+      navMobileTabEls = [];
+      sections.forEach(function (sec, i) {
+        var tab = document.createElement('button');
+        tab.type = 'button';
+        tab.className = 'espace-nav-mobile-tab';
+        tab.textContent = sec.title || 'Section ' + (i + 1);
+        tab.setAttribute('aria-current', 'false');
+        tab.addEventListener('click', function () {
+          goToSection(i, true);
+        });
+        track.appendChild(tab);
+        navMobileTabEls.push(tab);
+      });
+      navMobileEl.appendChild(track);
+    }
 
     var hashIdx = -1;
     if (window.location.hash && /^#espace-sec-\d+$/.test(window.location.hash)) {
