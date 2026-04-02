@@ -713,7 +713,27 @@ img { max-width: 100%; height: auto; display: block; }
   border-color: rgba(201, 169, 98, 0.45);
   background: rgba(201, 169, 98, 0.06);
 }
-@media (max-width: 899px) {
+/* Espace modèles : mobile = onglets (JS ajoute aussi body.qn-annonce-mobile selon le viewport) */
+body.qn-annonce-mobile .header-annonce #espace-nav,
+body.qn-annonce-mobile .header-annonce nav#espace-nav {
+  display: none !important;
+  visibility: hidden !important;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: -1px !important;
+}
+body.qn-annonce-mobile .header-annonce #espace-nav-mobile.is-populated,
+body.qn-annonce-mobile .header-annonce .espace-nav-mobile.is-populated {
+  display: block !important;
+}
+@media (max-width: 1023px) {
   .header-annonce {
     column-gap: 0.65rem;
     row-gap: 0.45rem;
@@ -734,11 +754,23 @@ img { max-width: 100%; height: auto; display: block; }
     align-items: flex-end;
     gap: 0.35rem;
   }
-  .header-annonce .espace-nav {
+  .header-annonce #espace-nav,
+  .header-annonce nav#espace-nav {
     display: none !important;
+    visibility: hidden !important;
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+    padding: 0 !important;
+    margin: -1px !important;
   }
   .header-annonce .espace-nav-mobile.is-populated {
-    display: block;
+    display: block !important;
   }
   .annonce-back {
     font-size: 0.65rem;
@@ -754,7 +786,7 @@ img { max-width: 100%; height: auto; display: block; }
     padding-top: calc(var(--space-2xl) + 4.5rem);
   }
 }
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .header-annonce {
     display: flex;
     flex-direction: row;
@@ -790,7 +822,7 @@ img { max-width: 100%; height: auto; display: block; }
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
 }
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .espace-nav {
     justify-content: center;
     flex-wrap: wrap;

@@ -242,6 +242,21 @@
     else closeNavPicker();
   }
 
+  /** Aligné sur le viewport réel (évite que le sélecteur « Rubrique » reste visible sur téléphone / tablette). */
+  var mqAnnonceMobile =
+    typeof window.matchMedia === 'function' ? window.matchMedia('(max-width: 1023px)') : null;
+  function onAnnonceViewportChange() {
+    if (!mqAnnonceMobile) return;
+    document.body.classList.toggle('qn-annonce-mobile', mqAnnonceMobile.matches);
+    if (mqAnnonceMobile.matches) closeNavPicker();
+  }
+  onAnnonceViewportChange();
+  if (mqAnnonceMobile && mqAnnonceMobile.addEventListener) {
+    mqAnnonceMobile.addEventListener('change', onAnnonceViewportChange);
+  } else if (mqAnnonceMobile && mqAnnonceMobile.addListener) {
+    mqAnnonceMobile.addListener(onAnnonceViewportChange);
+  }
+
   function setActiveNav(index) {
     if (index < 0 || index >= sections.length) return;
     if (navPickerLabelEl && sections[index]) {
