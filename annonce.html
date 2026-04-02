@@ -3,27 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Annonce — Quartier Noble</title>
+  <title>Espace modèles — Quartier Noble</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="espace-single-mode">
   <header class="header header-annonce scrolled">
     <a href="index.html" class="logo">Quartier Noble</a>
+    <nav class="espace-nav" id="espace-nav" aria-label="Rubriques de l'espace"></nav>
     <div class="annonce-header-actions">
-      <a href="index.html" class="annonce-back" data-locale="annoncePage.back">Retour au site</a>
-      <button type="button" class="btn btn-ghost btn-sm" id="annonce-logout" data-locale="annoncePage.logout">Déconnexion</button>
+      <a href="index.html" class="annonce-back" data-locale="espacePrivePage.back">Retour au site</a>
+      <button type="button" class="btn btn-ghost btn-sm" id="annonce-logout" data-locale="espacePrivePage.logout">Déconnexion</button>
     </div>
   </header>
 
   <main class="section section-annonce">
-    <div class="container">
-      <span class="section-label" data-locale="annoncePage.label">Espace réservé</span>
-      <h1 data-locale="annoncePage.title">Annonce</h1>
-      <div class="annonce-content" id="annonce-body"></div>
+    <div class="annonce-page-bg" aria-hidden="true"></div>
+    <div class="container annonce-container">
+      <div class="espace-board espace-single-board" id="espace-single-view" aria-live="polite"></div>
     </div>
   </main>
 
